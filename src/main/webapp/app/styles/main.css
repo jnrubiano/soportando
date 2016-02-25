@@ -1,0 +1,10 @@
+body {
+    padding: 0;
+    background: #222d32;
+}
+
+/* Left Menu */
+.item-menu-left{
+    cursor: pointer;
+}
+/* End Left Menu */

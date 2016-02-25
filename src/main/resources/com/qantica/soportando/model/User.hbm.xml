@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/02/2016 07:46:29 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.qantica.soportando.model.User" table="user" catalog="soportando" optimistic-lock="version">
+        <id name="uid" type="java.lang.Integer">
+            <column name="uid" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="200" not-null="true">
+                <comment>Nombre del usuario</comment>
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true">
+                <comment>Correo del usuario</comment>
+            </column>
+        </property>
+        <property name="login" type="string">
+            <column name="login" length="50" not-null="true">
+                <comment>Login del usuario</comment>
+            </column>
+        </property>
+        <property name="pass" type="string">
+            <column name="pass" not-null="true">
+                <comment>Clave del usuario</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

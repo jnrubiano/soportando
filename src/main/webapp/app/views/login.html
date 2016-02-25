@@ -1,0 +1,29 @@
+<div class="hold-transition login-page">
+    <div class="login-box">
+        <div class="login-logo">
+            <a>Soportando</a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">Inicio de sesión</p>
+            <form>
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="Usuario" ng-model="form.user">
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" class="form-control" placeholder="Contraseña" ng-model="form.pass">
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <a href="#">Olvidé mi contraseña</a><br>
+                    </div><!-- /.col -->
+                    <div class="col-xs-4">
+                        <div class="btn btn-primary btn-block btn-flat" ng-click="sendLogin()">Ingresar</div>
+                    </div><!-- /.col -->
+                </div>
+            </form>
+            {{form|json}}
+        </div><!-- /.login-box-body -->
+    </div><!-- /.login-box -->
+</div>
