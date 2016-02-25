@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name frontendApp.login
+ * @name soportando.login
  * @description
  * # login
- * Factory in the frontendApp.
+ * Factory in the soportando.
  */
-angular.module('frontendApp').factory('AuthService', ['$http', function ($http) {
+app.factory('AuthService', ['$http', function ($http) {
     return {
         login: function (data) {
             return $http.post(server + 'auth/login', data);

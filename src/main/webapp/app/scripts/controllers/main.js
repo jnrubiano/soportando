@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc function
- * @name frontendApp.controller:MainCtrl
+ * @name soportando.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the frontendApp
+ * Controller of the soportando
  */
-angular.module('frontendApp').controller('MainCtrl', function ($scope) {
-    $scope.usuario = "LCano";
+app.controller('MainCtrl', function ($scope) {
+    $scope.user = "LCano";
 });
