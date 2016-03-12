@@ -6,6 +6,7 @@
 package com.qantica.soportando.transfer;
 
 import com.qantica.soportando.model.User;
+import java.util.Date;
 
 /**
  *
@@ -14,18 +15,20 @@ import com.qantica.soportando.model.User;
 public class UserTransfer extends Transfer {
 
     private Integer uid;
-    private String name;
     private String email;
     private String login;
+    private Date lastAccess;
+    private int active;
 
     public UserTransfer() {
     }
 
     public UserTransfer(User u) {
         uid = u.getUid();
-        name = u.getName();
         email = u.getEmail();
         login = u.getLogin();
+        lastAccess = u.getLastAccess();
+        active = u.getActive();
     }
 
     /**
@@ -40,20 +43,6 @@ public class UserTransfer extends Transfer {
      */
     public void setUid(Integer uid) {
         this.uid = uid;
-    }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 
     /**
@@ -82,5 +71,21 @@ public class UserTransfer extends Transfer {
      */
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Date getLastAccess() {
+        return lastAccess;
+    }
+
+    public void setLastAccess(Date lastAccess) {
+        this.lastAccess = lastAccess;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 }

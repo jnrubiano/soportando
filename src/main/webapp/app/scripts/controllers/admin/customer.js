@@ -7,53 +7,57 @@
  * # MainCtrl
  * Controller of the soportando
  */
-app.controller('AdmCustomerCtrl', function ($scope) {
+app.controller('AdmCustomerCtrl', ['$scope', 'CompanyService', 'CustomerService', '$q', function ($scope, companyService, customerService, $q) {
 
-    $scope.user = "LCano";
-
-    $scope.form = {};
-
-    $scope.editing = false;
-
-    $scope.companies = [
-        {id: 1, nombre: "Empresa 1"},
-        {id: 2, nombre: "Empresa 2"},
-        {id: 3, nombre: "Empresa 3"},
-        {id: 4, nombre: "Empresa 4"}
-    ];
-
-    $scope.customers = [
-        {
-            empresa: "Empresa 1",
-            contacto: "Pepe Perez",
-            usuario: "pperez",
-            acceso: "2016-01-01 10:13:58",
-            estado: 1
-        },
-        {
-            empresa: "Empresa 2",
-            contacto: "Maria Rojas",
-            usuario: "mrojas",
-            acceso: "2016-01-01 10:13:58",
-            estado: 0
-        }
-    ];
-
-    $scope.editCustomer = function (customer) {
-        $scope.editing = true;
-        if (customer === null) {
-            customer = {
-                isNew: true,
-                estado: 1
-            };
-        }
-        $scope.form = customer;
-    };
-
-    $scope.saveCustomer = function (customer) {
+        $scope.user = "LCano";
+        $scope.form = {};
         $scope.editing = false;
-        if(customer.isNew){
-            $scope.customers.push(customer);
-        }
-    };
-});
+        $scope.companies = [];
+        $scope.customers = [];
+
+        var domains = companyService.list().success(function (data) {
+            $scope.companies = data;
+        }).error(function (data, status, headers, config) {
+            alert("Error al traer el listado de empresas.");
+        });
+        var cdata = customerService.list().success(function (data) {
+            $scope.customers = data;
+        }).error(function (data, status, headers, config) {
+            alert("Error al traer el listado de clientes.");
+        });
+        $q.all([domains, cdata]).then(function (data) {
+
+            $scope.editCustomer = function (customer) {
+                $scope.editing = true;
+                if (customer === null) {
+                    customer = {
+                        isNew: true,
+                        user: {active: 1}
+                    };
+                } else {
+                    customer.company = $scope.findCompany(customer.company);
+                }
+                $scope.form = customer;
+            };
+
+            $scope.saveCustomer = function (customer) {
+                $scope.editing = false;
+                if (customer.isNew) {
+                    $scope.customers.push(customer);
+                }
+            };
+
+            $scope.findCompany = function (obj) {
+                var index = arrayObjectIndexOf($scope.companies, obj.companyId, "companyId");
+                if ($scope.companies === undefined)
+                    return {};
+                if (index === -1)
+                    return {};
+                return $scope.companies[index];
+            };
+
+
+        });
+
+    }
+]);

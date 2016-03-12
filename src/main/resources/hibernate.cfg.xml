@@ -8,5 +8,7 @@
     <property name="hibernate.connection.username">qantica</property>
     <property name="hibernate.connection.password">ambiok</property>
     <mapping resource="com/qantica/soportando/model/User.hbm.xml"/>
+    <mapping resource="com/qantica/soportando/model/Company.hbm.xml"/>
+    <mapping resource="com/qantica/soportando/model/Customer.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

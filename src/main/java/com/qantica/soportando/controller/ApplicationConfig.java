@@ -30,6 +30,8 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(com.qantica.soportando.controller.AuthResource.class);
+        resources.add(com.qantica.soportando.controller.CompanyResource.class);
+        resources.add(com.qantica.soportando.controller.CustomerResource.class);
         resources.add(com.qantica.soportando.controller.UserResource.class);
     }
     

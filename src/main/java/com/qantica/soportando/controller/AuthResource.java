@@ -8,7 +8,6 @@ package com.qantica.soportando.controller;
 import com.qantica.soportando.model.User;
 import com.qantica.soportando.transfer.LoginTransfer;
 import com.qantica.soportando.transfer.StatusLoginTransfer;
-import com.qantica.soportando.transfer.UserTransfer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Context;
@@ -20,7 +19,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  * REST Web Service
@@ -43,6 +41,7 @@ public class AuthResource {
      * Retrieves representation of an instance of
      * com.qantica.soportando.controller.AuthResource
      *
+     * @param req
      * @return an instance of java.lang.String
      */
     @Path("login")

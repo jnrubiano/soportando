@@ -38,13 +38,13 @@
                         </tr>
                         <tr ng-repeat="(key, customer) in customers">
                             <td>{{key + 1}}.</td>
-                            <td>{{customer.empresa}}</td>
-                            <td>{{customer.contacto}}</td>
-                            <td>{{customer.usuario}}</td>
-                            <td>{{customer.acceso}}</td>
+                            <td>{{customer.company.name}}</td>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.user.login}}</td>
+                            <td>{{customer.user.lastAccess}}</td>
                             <td>
-                                <span ng-show="customer.estado === 0" class="badge bg-gray">Inactivo</span>
-                                <span ng-show="customer.estado === 1" class="badge bg-green">Activo</span>
+                                <span ng-show="customer.user.active === 0" class="badge bg-gray">Inactivo</span>
+                                <span ng-show="customer.user.active === 1" class="badge bg-green">Activo</span>
                             </td>
                             <td>
                                 <span class="btn btn-success fa fa-edit" ng-click="editCustomer(customer)">&nbsp;Editar</span>
@@ -75,38 +75,43 @@
                 <div class="box-body">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" class="form-control" placeholder="Usuario" ng-model="form.usuario">
+                        <input type="text" class="form-control" placeholder="Usuario" ng-model="form.user.login">
                     </div>
                     <br>
 
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                        <input type="password" class="form-control" ng-model="form.clave">
+                        <input type="password" class="form-control" ng-model="form.user.pass">
                     </div>
                     <br>
 
                     <div class="form-group">
                         <label>Empresa</label>
-                        <select class="form-control" ng-model="form.empresa">
-                            <option ng-repeat="(key, company) in companies" value="{{company.id}}">{{company.nombre}}</option>
+                        <select class="form-control" ng-model="form.company" ng-options="item.name for item in companies">
                         </select>
                     </div>
                     <br/>
 
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
-                        <input type="text" class="form-control" placeholder="Contacto" ng-model="form.contacto">
+                        <input type="text" class="form-control" placeholder="Contacto" ng-model="form.name">
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                        <input type="text" class="form-control" placeholder="Teléfono" ng-model="form.telefono">
+                        <input type="text" class="form-control" placeholder="Teléfono" ng-model="form.tel">
                     </div>
                     <br>
 
                     <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                        <input type="email" class="form-control" placeholder="Email" ng-model="form.correo">
+                        <input type="email" class="form-control" placeholder="Email" ng-model="form.user.email">
+                    </div>
+                    <br>
+                    
+                    <div class="input-group">
+                        <span class="input-group-addon" style="border-right: 1px solid #d2d6de;width: 40px;"><i class="fa fa-lock"></i></span>
+                        <input type="checkbox" style="margin-left: 10px;margin-top: 9px;" ng-true-value="1" ng-false-value="0" ng-model="form.user.active">
                     </div>
                     <br>
 

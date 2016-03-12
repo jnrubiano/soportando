@@ -40,7 +40,8 @@ var app = angular.module('soportando', [
     $httpProvider.interceptors.push(function ($q, $location, $cookies) {
         return {
             'request': function (config) {
-                if (!/\.html$/.test(config.url)) {
+                console.log(config);
+                if (!/\.html$/.test(config.url) && false) {
                     config.timeout = $q(function (resolve, reject) {
                         $.ajax({
                             url: server + 'auth/login',
@@ -78,3 +79,13 @@ var app = angular.module('soportando', [
         };
     });
 });
+
+
+function arrayObjectIndexOf(myArray, searchTerm, property) {
+    if (myArray !== undefined)
+        for (var i = 0, len = myArray.length; i < len; i++) {
+            if (String(myArray[i][property]) === String(searchTerm))
+                return i;
+        }
+    return -1;
+}
